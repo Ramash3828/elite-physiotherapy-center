@@ -2,3 +2,17 @@
     margin: 0;
     font-weight: bold;
 }
+.myNav a {
+    color: black;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+.myNav a.active,
+.myNav a:hover {
+    border-bottom: 3px solid #4bfffc;
+}

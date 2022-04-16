@@ -5,7 +5,11 @@ import "./Header.css";
 
 const Header = () => {
     return (
-        <Navbar collapseOnSelect bg="primary" expand="lg">
+        <Navbar
+            collapseOnSelect
+            style={{ backgroundColor: `#00B8B4` }}
+            expand="lg"
+        >
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     <div className="text-start logo">
@@ -17,7 +21,7 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ms-auto">
+                    <Nav className="ms-auto myNav">
                         <Nav.Link as={NavLink} to="/">
                             Home
                         </Nav.Link>
