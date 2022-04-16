@@ -1,0 +1,27 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "image": "https://i.ibb.co/HdDmDbr/knee.jpg",
+            "name": "Knee Pain",
+            "desc": "You are not alone Knee Pain is a common ailment that affects people of all ages. The prevalence of knee pain increases among the elderly.",
+            "price": 40
+        },
+
+        {
+            "id": 2,
+            "image": "https://i.ibb.co/s62bq28/back.jpg",
+            "name": "Back Pain",
+            "desc": "Unsurprisingly, the most common condition people experience is back related causes, with men and women equally affected. While many tend to not seek medical help, it is important to know that it can worsen if left untreated.",
+            "price": 45
+        },
+
+        {
+            "id": 3,
+            "image": "https://i.ibb.co/2hxdT1c/elbow.jpg",
+            "name": "Elbow Pain",
+            "desc": "If you engage in sports, hobbies or have jobs that require repetitive arm movements, there is an increased chance that you will experience elbow and wrist pain.",
+            "price": 35
+        }
+    ]
+}
