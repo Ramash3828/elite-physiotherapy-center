@@ -18,3 +18,4 @@ This project live site link: [Elite Physiotherapy Center](https://elite-physioth
 -   "Three kind of method to log in. They are Email and Password, Google, Github"
 -   "Blogs page are contain Question And Answer"
 -   "About page contain small description about myself."
+-   "NotFound Page"
