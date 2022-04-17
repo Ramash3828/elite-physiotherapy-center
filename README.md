@@ -5,7 +5,7 @@ This project live site link: [Elite Physiotherapy Center](https://elite-physioth
 ## Use Packages
 
 -   "bootstrap": "^5.1.3"
--   "firebase": "^9.6.11"\
+-   "firebase": "^9.6.11"
 -   "react-bootstrap": "^2.2.3"
 -   "react-router-dom": "^6.3.0"
 -   "react-firebase-hooks": "^5.0.3"
