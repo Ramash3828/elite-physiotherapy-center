@@ -6,11 +6,15 @@ import SocialComponent from "../SocialComponent/SocialComponent";
 import "./SignUp.css";
 
 const SignUp = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [conPassword, setConPassword] = useState("");
     const [validated, setValidated] = useState(false);
     const handleLogin = (event) => {
+        event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
         }
 
@@ -29,7 +33,11 @@ const SignUp = () => {
                     >
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Name" />
+                            <Form.Control
+                                onBlur={(e) => setName(e.target.value)}
+                                type="text"
+                                placeholder="Name"
+                            />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
@@ -37,6 +45,7 @@ const SignUp = () => {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
+                                onBlur={(e) => setEmail(e.target.value)}
                                 type="email"
                                 placeholder="Enter email"
                             />
@@ -51,15 +60,30 @@ const SignUp = () => {
                         >
                             <Form.Label>Password</Form.Label>
                             <Form.Control
+                                onBlur={(e) => setPassword(e.target.value)}
                                 type="password"
                                 placeholder="Password"
                             />
                         </Form.Group>
                         <Form.Group
                             className="mb-3"
+                            controlId="formBasicConPassword"
+                        >
+                            <Form.Label>Confirm-Password</Form.Label>
+                            <Form.Control
+                                onBlur={(e) => setConPassword(e.target.value)}
+                                type="password"
+                                placeholder="Confirm-Password"
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
                             controlId="formBasicCheckbox"
                         >
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check
+                                type="checkbox"
+                                label="Terms adn Conditions."
+                            />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Sign Up
@@ -72,7 +96,6 @@ const SignUp = () => {
                         </p>
                     </Form>
                     <SocialComponent></SocialComponent>
-                    <Loading></Loading>
                 </div>
             </div>
         </div>
