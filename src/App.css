@@ -41,3 +41,6 @@ button {
     border: none;
     outline: none;
 }
+button:focus {
+    outline: none !important;
+}

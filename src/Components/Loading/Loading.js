@@ -5,8 +5,8 @@ import "./Loading.css";
 const Loading = () => {
     return (
         <div
-            height="300px"
-            className="w-100 d-flex justify-content-center align-items-center"
+            style={{ height: `400px` }}
+            className="w-100 d-flex justify-content-center align-items-center py-5"
         >
             <Spinner animation="border" variant="primary" />
         </div>

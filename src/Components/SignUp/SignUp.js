@@ -24,6 +24,14 @@ const SignUp = () => {
             sendEmailVerification: true,
         });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    let errorInfo;
+    if (error || updateError) {
+        errorInfo = (
+            <p className="text-danger">
+                Error: {error?.message} {updateError?.message}
+            </p>
+        );
+    }
     if (user) {
         console.log(user);
     }
@@ -118,7 +126,9 @@ const SignUp = () => {
                                 label="Accept Elite Physiotherapy Center Terms adn Conditions."
                             />
                         </Form.Group>
+                        {errorInfo}
                         <Button
+                            className="w-100"
                             disabled={!agree}
                             variant="primary"
                             type="submit"

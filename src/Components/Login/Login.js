@@ -1,12 +1,17 @@
 // import { Button } from "bootstrap";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import {
+    useSendPasswordResetEmail,
+    useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase.init";
 import Loading from "../Loading/Loading";
 import SocialComponent from "../SocialComponent/SocialComponent";
 import "./Login.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -14,16 +19,20 @@ const Login = () => {
     const [validated, setValidated] = useState(false);
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, resetError] =
+        useSendPasswordResetEmail(auth);
     const navigate = useNavigate();
+    const location = useLocation();
     let errorInfo;
-    if (error) {
+    if (error || resetError) {
         errorInfo = <p className="text-danger">Error: {error?.message}</p>;
     }
-    if (loading) {
+    if (loading || sending) {
         return <Loading></Loading>;
     }
+    let from = location.state?.from?.pathname || "/";
     if (user) {
-        navigate("/home");
+        navigate(from, { replace: true });
     }
     const handleLogin = (event) => {
         event.preventDefault();
@@ -34,7 +43,14 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
         setValidated(true);
     };
-
+    const resetPassword = async () => {
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast("Sent email");
+        } else {
+            toast("Please Enter your email.");
+        }
+    };
     return (
         <div className="container d-block mx-auto text-start py-5">
             <h2 className="mb-3 text-center login-title">LOGIN</h2>
@@ -70,26 +86,32 @@ const Login = () => {
                             />
                         </Form.Group>
                         {errorInfo}
-                        <Form.Group
-                            className="mb-3"
-                            controlId="formBasicCheckbox"
+
+                        <Button
+                            className="w-100"
+                            variant="primary"
+                            type="submit"
                         >
-                            <Form.Check
-                                type="checkbox"
-                                label="Terms adn Conditions."
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
                             Login
                         </Button>
-                        <p className="my-3">
-                            New to Elite Physiotherapy Center?{" "}
-                            <Link className="text-decoration-none" to="/signup">
-                                Create New Account
-                            </Link>
-                        </p>
                     </Form>
+                    <p className="my-3">
+                        New to Elite Physiotherapy Center?{" "}
+                        <Link className="text-decoration-none" to="/signup">
+                            Create New Account
+                        </Link>
+                    </p>
+                    <p>
+                        Forget Password?{" "}
+                        <button
+                            onClick={resetPassword}
+                            className="btn btn-link reset-btn"
+                        >
+                            Reset Password
+                        </button>
+                    </p>
                     <SocialComponent></SocialComponent>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

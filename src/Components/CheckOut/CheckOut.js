@@ -103,7 +103,7 @@ const CheckOut = () => {
                         feedbackType="invalid"
                     />
                 </Form.Group>
-                <Button type="submit">Submit form</Button>
+                <Button type="submit">Submit</Button>
             </Form>
         </div>
     );

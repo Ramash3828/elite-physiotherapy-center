@@ -3,3 +3,10 @@
     font-weight: bold;
     color: #00b8b4 !important;
 }
+.reset-btn {
+    background-color: transparent !important;
+    text-decoration: none !important;
+}
+button:focus {
+    outline: none;
+}
