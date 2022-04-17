@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import SocialComponent from "../SocialComponent/SocialComponent";
 import "./Login.css";
 
 const Login = () => {
@@ -27,13 +28,6 @@ const Login = () => {
                         validated={validated}
                         onSubmit={handleLogin}
                     >
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Name" />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
-                        </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
@@ -57,9 +51,22 @@ const Login = () => {
                         </Form.Group>
                         <Form.Group
                             className="mb-3"
+                            controlId="formBasicConPassword"
+                        >
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                placeholder="Confirm-Password"
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
                             controlId="formBasicCheckbox"
                         >
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check
+                                type="checkbox"
+                                label="Terms adn Conditions."
+                            />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Login
@@ -71,6 +78,7 @@ const Login = () => {
                             </Link>
                         </p>
                     </Form>
+                    <SocialComponent></SocialComponent>
                 </div>
             </div>
         </div>
