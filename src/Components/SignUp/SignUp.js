@@ -4,7 +4,7 @@ import {
     useCreateUserWithEmailAndPassword,
     useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase.init";
 import Loading from "../Loading/Loading";
 import SocialComponent from "../SocialComponent/SocialComponent";
@@ -19,6 +19,7 @@ const SignUp = () => {
     const [validated, setValidated] = useState(false);
     const [agree, setAgree] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth, {
             sendEmailVerification: true,
@@ -32,8 +33,9 @@ const SignUp = () => {
             </p>
         );
     }
+    let from = location.state?.from?.pathname || "/";
     if (user) {
-        console.log(user);
+        navigate(from, { replace: true });
     }
     if (loading || updating) {
         return <Loading></Loading>;
@@ -51,7 +53,7 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
         console.log("Updated profile");
-        navigate("/home");
+
         setValidated(true);
     };
     return (
