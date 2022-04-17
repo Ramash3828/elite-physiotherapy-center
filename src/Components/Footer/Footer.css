@@ -1,0 +1,19 @@
+footer {
+    padding: 15px 0;
+    background-color: #011d1d;
+    color: #fff;
+}
+.logo-area {
+    padding: 10px;
+    border: 2px solid #fff;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+.logo-area a {
+    display: inline-block;
+}
