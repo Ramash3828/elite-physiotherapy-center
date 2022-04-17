@@ -49,11 +49,6 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row g-5 my-5">
-                    <div className="col-md-4"></div>
-                    <div className="col-md-4"></div>
-                    <div className="col-md-4"></div>
-                </div>
             </div>
         </div>
     );
