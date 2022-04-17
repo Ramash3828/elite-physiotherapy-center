@@ -1,19 +1,37 @@
 // import { Button } from "bootstrap";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../Firebase.init";
+import Loading from "../Loading/Loading";
 import SocialComponent from "../SocialComponent/SocialComponent";
 import "./Login.css";
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [validated, setValidated] = useState(false);
+    const [signInWithEmailAndPassword, user, loading, error] =
+        useSignInWithEmailAndPassword(auth);
+    const navigate = useNavigate();
+    let errorInfo;
+    if (error) {
+        errorInfo = <p className="text-danger">Error: {error?.message}</p>;
+    }
+    if (loading) {
+        return <Loading></Loading>;
+    }
+    if (user) {
+        navigate("/home");
+    }
     const handleLogin = (event) => {
+        event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
         }
-
+        signInWithEmailAndPassword(email, password);
         setValidated(true);
     };
 
@@ -31,6 +49,7 @@ const Login = () => {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
+                                onBlur={(e) => setEmail(e.target.value)}
                                 type="email"
                                 placeholder="Enter email"
                             />
@@ -45,11 +64,12 @@ const Login = () => {
                         >
                             <Form.Label>Password</Form.Label>
                             <Form.Control
+                                onBlur={(e) => setPassword(e.target.value)}
                                 type="password"
                                 placeholder="Password"
                             />
                         </Form.Group>
-
+                        {errorInfo}
                         <Form.Group
                             className="mb-3"
                             controlId="formBasicCheckbox"

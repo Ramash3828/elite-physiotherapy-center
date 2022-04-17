@@ -28,7 +28,7 @@ const SocialComponent = () => {
         return <Loading></Loading>;
     }
     if (googleUser || githubUser) {
-        navigate("/");
+        navigate("/home");
     }
     return (
         <>

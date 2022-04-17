@@ -14,6 +14,7 @@ const Header = () => {
             collapseOnSelect
             style={{ backgroundColor: `#00B8B4` }}
             expand="lg"
+            sticky="top"
         >
             <Container>
                 <Navbar.Brand as={Link} to="/">
@@ -40,7 +41,7 @@ const Header = () => {
                             <Nav.Link
                                 onClick={() => signOut(auth)}
                                 as={NavLink}
-                                to="/login"
+                                to="/"
                             >
                                 Log Out
                             </Nav.Link>
